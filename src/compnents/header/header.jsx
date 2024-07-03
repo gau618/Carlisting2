@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import styles from "./header.module.scss";
 
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const handleScroll = () => {
+    const position = window.scrollY
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className={styles.header}>
+      <div className={`${styles.header} ${scrollPosition > 100 ? styles.headerScrolled : ''}`}>
         <div className={styles.logo}>
           <h1><span>Car</span>Mart</h1>
         </div>

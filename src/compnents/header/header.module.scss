@@ -1,142 +1,149 @@
 .header {
-    margin: 0 10%;
-    display: flex;
-    padding: 20px 0px;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    z-index: 3;
-    position: absolute;
-    .logo {
-      h1 {
-        font-size: 30px;
-        color: #fff;
-        font-family: 'Poppins', sans-serif;
-        span {
-          color: #fab64a;
-        }
-      }
-    }
-    
-    .navLinks {
-      display: flex;
-      gap: 40px;
-      a {
-        text-decoration: none;
-        font-size: 15px;
-        color: #fff;
-        font-family: 'Poppins', sans-serif;
-      }
-      a:hover {
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  z-index: 3;
+  position: absolute;
+  transition: top 0.3s, background-color 0.3s, transform 0.3s;
+  &.headerScrolled {
+    position: fixed;
+    top: 0;
+    background-color: rgb(27,27,27);
+    transform: translateY(0); /* Translate to the original position */
+  }
+
+  .logo {
+    h1 {
+      font-size: 30px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      span {
         color: #fab64a;
       }
     }
-    
-    .credentialbutton {
-      button {
-        width: 120px;
-        height: 40px;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        margin-right: 10px;
-        color: #fff;
-        background-color: transparent;
-        border: 2px solid white;
-        border-radius: 30px;
-        font-weight: 400;
-        font-family: 'Poppins', sans-serif;
-        transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-      }
-      button:hover {
-        background-color: #fab64a;
-        border: 2px solid #fab64a;
-        color: black;
-      }
-    }
-  
-    .menuIcon {
-      display: none;
-      font-size: 30px;
-      cursor: pointer;
-      color: #fff;
-    }
   }
-  
-  .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 3;
-    top: 0;
-    right: 0;
-    background-color:rgb(43, 36, 32);
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    
+
+  .navLinks {
+    display: flex;
+    gap: 40px;
     a {
-      padding: 8px 8px 24px 32px;
       text-decoration: none;
       font-size: 15px;
       color: #fff;
-      display: block;
-      transition: 0.3s;
+      font-family: 'Poppins', sans-serif;
     }
-    
     a:hover {
       color: #fab64a;
     }
-    .credentialbutton {
-        padding: 8px 8px 8px 32px;
-        button {
-          width: 90px;
-          height: 30px;
-          border: none;
-          cursor: pointer;
-          font-size: 12px;
-          margin-right: 10px;
-          color: #fff;
-          background-color: transparent;
-          border: 2px solid white;
-          border-radius: 30px;
-          font-weight: 400;
-          font-family: 'Poppins', sans-serif;
-          transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-        }
-        button:hover {
-          background-color: #fab64a;
-          border: 2px solid #fab64a;
-          color: black;
-        }
-      }
-    .closebtn {
-      position: absolute;
-      top: 0;
-      right: 25px;
-      font-size: 36px;
-      margin-left: 50px;
+  }
+
+  .credentialbutton {
+    button {
+      width: 120px;
+      height: 40px;
+      border: none;
       cursor: pointer;
+      font-size: 14px;
+      margin-right: 10px;
       color: #fff;
+      background-color: transparent;
+      border: 2px solid white;
+      border-radius: 30px;
+      font-weight: 400;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    button:hover {
+      background-color: #fab64a;
+      border: 2px solid #fab64a;
+      color: black;
     }
   }
-  
-  .open {
-    width: 250px;
+
+  .menuIcon {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
   }
-  
-  @media screen and (max-width: 768px) {
-    .header {
-      .navLinks {
-        display: none;
-      }
-     .credentialbutton{
-        display: none;
-     } 
-      
-      .menuIcon {
-        display: block;
-      }
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  background-color: rgb(43, 36, 32);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+
+  a {
+    padding: 8px 8px 24px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: #fab64a;
+  }
+
+  .credentialbutton {
+    padding: 8px 8px 8px 32px;
+    button {
+      width: 90px;
+      height: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      margin-right: 10px;
+      color: #fff;
+      background-color: transparent;
+      border: 2px solid white;
+      border-radius: 30px;
+      font-weight: 400;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    button:hover {
+      background-color: #fab64a;
+      border: 2px solid #fab64a;
+      color: black;
     }
   }
-  
+
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+    color: #fff;
+  }
+}
+
+.open {
+  width: 250px;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    .navLinks {
+      display: none;
+    }
+    .credentialbutton {
+      display: none;
+    }
+    .menuIcon {
+      display: block;
+    }
+  }
+}
