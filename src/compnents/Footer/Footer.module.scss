@@ -1,0 +1,110 @@
+.footer {
+    padding: 80px 10%;
+    background-color: rgb(27,27,27);
+    .footerContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      .About_Contact {
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        .footerSection {
+          padding-bottom: 20px;
+          p {
+            color: #787d84;
+          }
+          h2 {
+            color: #fff;
+            padding-bottom: 20px;
+          }
+          ul {
+            li {
+              color: #787d84;
+            }
+            li:hover{
+              color: #fab64a;
+            }
+          }
+        }
+      }
+      .footerSectioninput {
+        width: 30%;
+        h2 {
+          color: #fff;
+          padding-bottom: 20px;
+        }
+        p{
+          color: #787d84;
+          padding-bottom: 15px;
+        }
+        form{
+          display: flex;
+          flex-direction: column;
+          input{
+              margin-bottom: 20px;
+              padding: 2px 0px;
+              height: 20px;
+              outline: none;
+          }
+          textarea{
+              resize: none;
+              outline: none;
+              margin-bottom: 20px;
+          }
+          button {
+              height: 30px;
+              color: #fff;
+              cursor: pointer;
+              border: none;
+              background: linear-gradient(45deg,#fab64a 50%, #fff 50%);
+              background-size: 300% 150%;
+              background-position: left bottom;
+              transition: background-position 0.2s ease-out;
+            }
+        
+            button:hover {
+              background-position: right bottom;
+              color: black;
+            }
+        }
+      }
+      @media (max-width:768px) {
+         .footerSectioninput{
+          display: none;
+         }
+      }
+      .footerSection {
+        h2 {
+          color: #fff;
+          padding-bottom: 20px;
+        }
+        ul {
+          li {
+            padding-bottom: 10px;
+            a {
+              text-decoration: none;
+              color: #787d84;
+            }
+            a:hover{
+              color: #fab64a;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width:768px) {
+    .footer{
+      padding: 80px 10px;
+      .footerContainer {
+        flex-direction: column;
+        .About_Contact{
+               width: 100%;
+        }
+      }
+    }
+ }
+  

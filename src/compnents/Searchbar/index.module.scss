@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../assets/background1.jpg") no-repeat center center fixed; /* Change to your image path */
+  background-size: cover;
+  .Appheader {
+    width: 100%;
+    padding: 0px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+.searchbar {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 30px;
+    padding: 15px 30px;
+    align-items: center;
+    background-color:  rgb(27,27,27);
+    justify-content: space-between;
+    .searchbaritem {
+      margin: 0 10px;
+      padding: 10px;
+      border: none;
+      width: 22%;
+      border-radius: 5px;
+      font-size: 12px;
+      border-radius: 30px;
+      outline: none;
+      color: rgb(127,145,135);
+      background-color:  rgb(27,27,27);
+    }
+
+  
+    .searchbarbutton {
+      background-color: #ffaa00;
+      color: rgb(60, 60, 60);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 30px;
+      width:150px;
+  
+      &:hover {
+        background-color: #e69a00;
+      }
+    }
+  }
+  @media (max-width:768px) {
+    .searchbar{
+      flex-direction: column;
+      .searchbaritem{
+        width: 80%;
+        margin-bottom: 10px;
+      }
+    }
+  }
