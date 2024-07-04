@@ -40,7 +40,7 @@ import styles from './Footer.module.scss';
                     <p>Get our weekly newsletter for latest car news, exclusive offers and deals and more.</p>
                     <form>
                         <input type="email" placeholder="Your Email*" />
-                        <textarea name="" rows={8} id=""></textarea>
+                        <textarea name="" rows={8} id="" placeholder='Your Comments'> </textarea>
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>

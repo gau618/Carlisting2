@@ -1,0 +1,49 @@
+.Maincontainer {
+  position: relative;
+  width: 100%;
+  height: 70vh; // Adjust height as necessary
+  overflow: hidden;
+
+  .imgcontainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+  }
+  .carnameandtype {
+    margin: 0 10%;
+    padding-top: 200px;
+    position: relative;
+    z-index: 2;
+    p {
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      color: #ffcf83;
+      margin: 0;
+    }
+    h1 {
+      font-size: 35px;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      margin: 1px 0;
+    }
+  }
+}

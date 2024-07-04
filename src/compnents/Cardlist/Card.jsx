@@ -1,32 +1,11 @@
 import React, { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styles from './Cardlist.module.scss';
-import img from "../../assets/a.jpg"
-import img1 from "../../assets/b.jpg"
-import img2 from "../../assets/c.jpg"
-const cars = [
-  {
-    name: 'Audi Q8',
-    image: img, // Update with your image path
-    details: '4 Seats, Auto, 2 Bags, Age 25',
-    price: '$65000',
-  },
-  {
-    name: 'Lamborghini Urus',
-    image: img1, // Update with your image path
-    details: '4 Seats, Auto, 2 Bags, Age 25',
-    price: '$75000',
-  },
-  {
-    name: 'Ferrari SF90',
-    image: img2, // Update with your image path
-    details: '2 Seats, Auto, 1 Bag, Age 25',
-    price: '$90000',
-  },
-];
+import { useNavigate } from 'react-router-dom';
+import {cars} from "../../Data/CarData"
 
 const CarCarousel = () => {
- 
+  const Navigate=useNavigate();
   return (
     <div className={styles.carousel}>
       <div className={styles.carouselInner}>
@@ -39,7 +18,7 @@ const CarCarousel = () => {
             <div className={styles.carouselCaption}>
               <h2>{car.name}</h2>
               <div className={styles.price_details}>
-              <button className={styles.detailsButton}>Details</button>
+              <button className={styles.detailsButton} onClick={()=>{Navigate(`/CarDetails/${car.carId}`)}}>Details</button>
               <span className={styles.price}>{car.price}</span>
               </div>
             </div>
