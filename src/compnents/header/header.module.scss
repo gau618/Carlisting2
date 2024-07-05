@@ -7,10 +7,11 @@
   z-index: 3;
   position: absolute;
   transition: top 0.3s, background-color 0.3s, transform 0.3s;
+
   &.headerScrolled {
     position: fixed;
     top: 0;
-    background-color: rgb(27,27,27);
+    background-color: rgb(27, 27, 27);
     transform: translateY(0); /* Translate to the original position */
   }
 
@@ -18,7 +19,7 @@
     h1 {
       font-size: 30px;
       color: #fff;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       span {
         color: #fab64a;
       }
@@ -28,13 +29,19 @@
   .navLinks {
     display: flex;
     gap: 40px;
+
     a {
       text-decoration: none;
       font-size: 15px;
       color: #fff;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
     }
+
     a:hover {
+      color: #fab64a;
+    }
+
+    .activeLink {
       color: #fab64a;
     }
   }
@@ -52,9 +59,10 @@
       border: 2px solid white;
       border-radius: 30px;
       font-weight: 400;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
+
     button:hover {
       background-color: #fab64a;
       border: 2px solid #fab64a;
@@ -95,8 +103,13 @@
     color: #fab64a;
   }
 
+  .activeLink {
+    color: #fab64a;
+  }
+
   .credentialbutton {
     padding: 8px 8px 8px 32px;
+
     button {
       width: 90px;
       height: 30px;
@@ -109,9 +122,10 @@
       border: 2px solid white;
       border-radius: 30px;
       font-weight: 400;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
+
     button:hover {
       background-color: #fab64a;
       border: 2px solid #fab64a;
@@ -139,9 +153,11 @@
     .navLinks {
       display: none;
     }
+
     .credentialbutton {
       display: none;
     }
+
     .menuIcon {
       display: block;
     }
