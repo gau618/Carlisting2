@@ -54,6 +54,9 @@
   @media (max-width:768px) {
     .searchbar{
       flex-direction: column;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: 0px 20px;
       .searchbaritem{
         width: 80%;
         margin-bottom: 10px;

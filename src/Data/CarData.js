@@ -3,6 +3,12 @@ import imgLamborghini from "../assets/b.jpg";
 import imgFerrari from "../assets/c.jpg";
 import imgG1 from "../assets/imggallery1.jpg";
 import imgG2 from "../assets/imggallery2.jpg";
+import imgBMW from "../assets/CarCard1.jpg";
+import imgMercedes from "../assets/Carcard2.jpg";
+import imgPorsche from "../assets/Carcard3.jpg";
+import imgTesla from "../assets/Carcard4.jpg";
+import imgBentley from "../assets/Carcard5.jpg";
+import imgRollsRoyce from "../assets/Carcard6.jpg";
 
 export const cars = [
   {
@@ -17,8 +23,8 @@ export const cars = [
     mileage: '10,000 miles',
     interiorColor: 'Black Leather',
     price: '$65000',
-    transmission: 'Automatic', // Added transmission type
-    fuel: 'Gasoline', // Added fuel type
+    transmission: 'Automatic',
+    fuel: 'Gasoline',
   },
   {
     carId: 2,
@@ -32,8 +38,8 @@ export const cars = [
     mileage: '5,000 miles',
     interiorColor: 'Black Alcantara',
     price: '$75000',
-    transmission: 'Automatic', // Added transmission type
-    fuel: 'Gasoline', // Added fuel type
+    transmission: 'Automatic',
+    fuel: 'Gasoline',
   },
   {
     carId: 3,
@@ -47,8 +53,98 @@ export const cars = [
     mileage: '2,000 miles',
     interiorColor: 'Red Leather',
     price: '$90000',
-    transmission: 'Automatic', // Added transmission type
-    fuel: 'Gasoline', // Added fuel type
+    transmission: 'Automatic',
+    fuel: 'Gasoline',
+  },
+  {
+    carId: 4,
+    name: 'BMW X5',
+    imagegallery: [imgG1, imgG2],
+    image: imgBMW,
+    carType: 'SUV',
+    engine: '3.0L I6',
+    color: 'White',
+    VIN: 'LMN123456789XYZ',
+    mileage: '15,000 miles',
+    interiorColor: 'Beige Leather',
+    price: '$60000',
+    transmission: 'Automatic',
+    fuel: 'Gasoline',
+  },
+  {
+    carId: 5,
+    name: 'Mercedes-Benz G-Class',
+    imagegallery: [imgG1, imgG2],
+    image: imgMercedes,
+    carType: 'SUV',
+    engine: '4.0L V8',
+    color: 'Silver',
+    VIN: 'OPQ987654321ABC',
+    mileage: '8,000 miles',
+    interiorColor: 'Black Leather',
+    price: '$70000',
+    transmission: 'Automatic',
+    fuel: 'Gasoline',
+  },
+  {
+    carId: 6,
+    name: 'Porsche 911',
+    imagegallery: [imgG1, imgG2],
+    image: imgPorsche,
+    carType: 'Sports',
+    engine: '3.0L H6',
+    color: 'Blue',
+    VIN: 'RST123456789DEF',
+    mileage: '4,000 miles',
+    interiorColor: 'Grey Leather',
+    price: '$80000',
+    transmission: 'Automatic',
+    fuel: 'Gasoline',
+  },
+  {
+    carId: 7,
+    name: 'Tesla Model S',
+    imagegallery: [imgG1, imgG2],
+    image: imgTesla,
+    carType: 'Sedan',
+    engine: 'Electric',
+    color: 'Black',
+    VIN: 'UVW987654321XYZ',
+    mileage: '20,000 miles',
+    interiorColor: 'White Leather',
+    price: '$85000',
+    transmission: 'Automatic',
+    fuel: 'Electric',
+  },
+  {
+    carId: 8,
+    name: 'Bentley Bentayga',
+    imagegallery: [imgG1, imgG2],
+    image: imgBentley,
+    carType: 'SUV',
+    engine: '6.0L W12',
+    color: 'Green',
+    VIN: 'XYZ123456789LMN',
+    mileage: '12,000 miles',
+    interiorColor: 'Brown Leather',
+    price: '$90000',
+    transmission: 'Automatic',
+    fuel: 'Gasoline',
+  },
+  {
+    carId: 9,
+    name: 'Rolls-Royce Phantom',
+    imagegallery: [imgG1, imgG2],
+    image: imgRollsRoyce,
+    carType: 'Sedan',
+    engine: '6.75L V12',
+    color: 'Black',
+    VIN: 'ABC987654321PQR',
+    mileage: '3,000 miles',
+    interiorColor: 'White Leather',
+    price: '$95000',
+    transmission: 'Automatic',
+    fuel: 'Gasoline',
   },
 ];
 

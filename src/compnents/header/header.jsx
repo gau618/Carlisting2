@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import styles from "./header.module.scss";
+import { useNavigate,Link } from 'react-router-dom';
+
 
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const Navigate=useNavigate();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -30,9 +33,10 @@ export default function Header() {
           <h1><span>Car</span>Mart</h1>
         </div>
         <div className={styles.navLinks}>
-          <a href="#">Home</a>
+          <Link to='/'>HOME</Link>
           <a href="#">VIN</a>
           <a href="#">CHATBOT</a>
+          <Link to='/Carlist'>CARLIST</Link>
         </div>
         <div className={styles.credentialbutton}>
           <button>Credentials</button>
@@ -42,9 +46,10 @@ export default function Header() {
         </div>
       </div>
       <div className={`${styles.sidebar} ${sidebarOpen ? styles.open : ''}`}>
-        <a href="#">Home</a>
+        <Link to='/'>HOME</Link>
         <a href="#">VIN</a>
         <a href="#">CHATBOT</a>
+        <Link to='/Carlist'>CARLIST</Link>
         <div className={styles.credentialbutton}>
           <button>Credentials</button>
         </div>

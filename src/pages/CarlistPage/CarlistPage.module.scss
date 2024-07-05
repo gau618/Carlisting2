@@ -1,0 +1,15 @@
+.CarlistpageContainer{
+    .searchbarcontainer{
+        padding: 0px 15%;
+        width: 100%;
+         position: absolute;
+         top: 230px;
+    }
+    @media (max-width:786px) {
+        .searchbarcontainer{
+            padding: 0px 5%;
+            top:180px;
+        }
+    }
+
+}
