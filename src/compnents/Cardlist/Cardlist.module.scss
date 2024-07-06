@@ -5,62 +5,107 @@
     padding: 30px 0px;
    
     .Carlistcontainerheader {
-      padding: 30px;
-     p{
+      padding: 30px 10px;
+      p {
         padding-bottom: 10px;
         color: #fab64a;
         letter-spacing: 3px;
         display: block;
         font-size: 12px;
         font-weight: 400;
-     }
+      }
       h1 {
         padding-bottom: 50px;
         font-size: 36px;
         font-family: 'Poppins', sans-serif;
         margin-bottom: 35px;
-        span{
+        span {
             color: #fab64a;
         }
       }
     }
 }
-.carousel{
+
+.carouselContainer {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     width: 100%;
-    .carouselInner{
-        display: flex;
-        overflow-y: auto;
-        gap: 30px;
-        scrollbar-width: none;
-         width: 100%;
-        .carouselItem{
+
+    .arrowleft {
+        font-size: 1.5rem;
+        left: 70px;
+        top: 150px;
+        color: #fab64a;
+        cursor: pointer;
+        position: absolute;
+        user-select: none;
+        padding: 5px;
+        background-color: rgb(27,27,27);
+        transition: color 0.3s ease;
+        border-radius: 50%;
+        &:hover {
+            color: #fff;
+        }
+        z-index: 3;
+    }
+    .arrowright {
+        font-size: 1.5rem;
+        right: 70px;
+        top: 150px;
+        color: #fab64a;
+        cursor: pointer;
+        position: absolute;
+        user-select: none;
+        padding: 5px;
+        border-radius: 50%;
+        background-color: rgb(27,27,27);
+        transition: color 0.3s ease;
+        &:hover {
+            color: #fff;
+        }
+        z-index: 3;
+    }
+}
+
+.carousel {
+    display: flex;
+    overflow: auto;
+    scrollbar-width: none;
+    width: 90%; // Adjust the width as needed
+}
+
+.carouselInner {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    .carouselItem {
+        min-width: 500px;
+        img {
             width: 100%;
-            min-width: 500px;
-            img{
-                width: 100%;
-                height: 320px;
-                border-radius: 10px;
-                transition: transform .3s;
-            }
-            img:hover{
-                transform: scale(1.05);
-            }
-            .carouselCaption{
-              h2{
+            height: 320px;
+            border-radius: 10px;
+            transition: transform .3s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .carouselCaption {
+            h2 {
                 font-size: 18px;
-                 font-family: 'Poppins', sans-serif;
-                 margin-bottom: 10px;
-              }
-              .price_details{
+                font-family: 'Poppins', sans-serif;
+                margin-bottom: 10px;
+            }
+            .price_details {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 gap: 20px;
-                .price{
+                .price {
                     color: #fab64a;
                 }
-                .detailsButton{ 
+                .detailsButton { 
                     width: 90px;
                     height: 30px;
                     border: none;
@@ -79,16 +124,13 @@
                     background-color: #fff;
                     border: 2px solid #fff;
                     color: black;
-                  }
-              }
-            }
-        }
-        @media (max-width:786px) {
-            .carouselItem{
-                min-width: 300px;
+                }
             }
         }
     }
+    @media (max-width: 786px) {
+        .carouselItem {
+            min-width: 300px;
+        }
+    }
 }
-  
-  

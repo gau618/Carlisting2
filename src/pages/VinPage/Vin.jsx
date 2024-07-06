@@ -62,7 +62,7 @@ const VehicleDetails = () => {
           <button onClick={handleSubmit}>Search</button>
         </div>
         <div className={styles.result}>
-      {vehicleInfo && (
+      {vehicleInfo ? (
         <div>
           <h3>{vehicleInfo['Make']} {vehicleInfo['Model']} ({vehicleInfo['Model Year']})</h3>
           {Object.keys(vehicleInfo).map((key) => (
@@ -71,6 +71,12 @@ const VehicleDetails = () => {
             </div>
           ))}
         </div>
+      ):(
+        <>
+        <div className={styles.VIN}>
+          <h1>Waiting For <span>VIN</span> </h1>
+        </div>
+        </>
       )}
         </div>
     </div>

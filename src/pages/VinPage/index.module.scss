@@ -32,7 +32,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
-        padding: 40px 10%;
+        padding: 60px 10%;
         justify-content: center;
         background-color: rgb(27,27,27);
         div {
@@ -68,6 +68,23 @@
            }
         }
         }
+        .VIN{
+          h1{
+            margin: 10px 0px;
+            color: #fff;
+            font-family: "Poppins";
+            text-align: center;
+            font-weight: bold;
+            font-size: 35px;
+            letter-spacing: 2px;
+          }
+          span {
+            color: #fab64a;
+            font-weight: bold;
+            font-family: "Poppins";
+          }
+        }
+       
       }
 }
 @media (max-width:400px) {

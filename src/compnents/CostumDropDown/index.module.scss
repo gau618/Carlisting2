@@ -1,0 +1,58 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 22%;
+}
+
+.dropdownHeader {
+  width: 90%;
+  padding: 0px;
+  background-color: rgb(27, 27, 27);
+  color: rgb(127, 145, 135);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0px;
+}
+
+.arrow {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.dropdownList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 90%;
+  background-color: rgb(27, 27, 27);
+  border-radius: 5px;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 10;
+  font-size: 12px;
+  scrollbar-width: none;
+  font-family: "poppins";
+}
+
+.dropdownItem {
+  padding: 10px;
+  cursor: pointer;
+  color: rgb(127, 145, 135);
+
+  &:hover {
+    background-color: #fab64a;
+    color: black;
+  }
+}
+@media (max-width: 700px) {
+  .dropdown {
+    width: 70%;
+  }
+  .dropdownHeader{
+    margin: 15px 0px;
+  }
+}
