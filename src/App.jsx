@@ -7,6 +7,7 @@ import CarlistPage from './pages/CarlistPage/CarlistPage'
 import VehicleDetails from './pages/VinPage/Vin'
 import Chatbot from './pages/ChatBotPage/ChatBotPage'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
+import SellCarPage from './pages/SellCarPage/SellCarPage'
 import './App.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
    <Route path='/Carlist' element={<CarlistPage/>}></Route>
    <Route path='/VehicleDetails' element={<VehicleDetails/>}></Route>
    <Route path='/Chatbot' element={<Chatbot/>}></Route>
+   <Route path='/SellCar' element={<SellCarPage/>}></Route>
    </Routes>
    <Footer/>
    </BrowserRouter>

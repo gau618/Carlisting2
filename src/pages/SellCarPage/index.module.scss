@@ -1,0 +1,33 @@
+.sellCarContainer{
+  overflow-x: hidden;
+    .heading{
+        padding: 0px 10%;
+        position: absolute;
+        top: 230px;
+        width: 100%;
+        text-align: center;
+        h1 {
+            margin: 10px 0px;
+            color: #fff;
+            font-family: "Poppins";
+            text-align: center;
+            font-weight: bold;
+            font-size: 35px;
+            span {
+              color: #fab64a;
+              font-weight: bold;
+              font-family: "Poppins";
+            }
+          }
+    }
+    .sellerform{
+      padding: 0px 10%;
+      background-color: rgb(27,27,27);
+    }
+    @media (max-width:600px) {
+      .sellerform{
+        padding: 0px 5%;
+        background-color: rgb(27,27,27);
+      }
+    }
+}

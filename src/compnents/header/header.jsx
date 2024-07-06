@@ -77,6 +77,13 @@ export default function Header() {
           >
             CARLIST
           </Link>
+          <Link
+          to="/SELLCAR"
+          className={activeLink === "/SELLCAR" ? styles.activeLink : ""}
+          onClick={() => handleLinkClick("/SELLCAR")}
+        >
+          SELLCAR
+        </Link>
         </div>
         <div className={styles.credentialbutton}>
           <button>Credentials</button>
@@ -113,6 +120,13 @@ export default function Header() {
           onClick={() => handleLinkClick("/Carlist")}
         >
           CARLIST
+        </Link>
+        <Link
+          to="/SELLCAR"
+          className={activeLink === "/SELLCAR" ? styles.activeLink : ""}
+          onClick={() => handleLinkClick("/SELLCAR")}
+        >
+          SELLCAR
         </Link>
         <div className={styles.credentialbutton}>
           <button>Credentials</button>
