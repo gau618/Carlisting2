@@ -58,7 +58,7 @@ const VehicleDetails = () => {
     <div className={styles.VehicleDetailscontainer}>
         <CarlistBackground background={background}/>
         <div className={styles.search}>
-          <input type="text" />
+          <input type="text" placeholder='Enter your VIN'/>
           <button onClick={handleSubmit}>Search</button>
         </div>
         <div className={styles.result}>

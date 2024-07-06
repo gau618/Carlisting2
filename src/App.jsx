@@ -5,6 +5,7 @@ import CarDetails from './pages/carDetailsPage/CarDetails'
 import { Footer } from './compnents/Footer/Footer'
 import CarlistPage from './pages/CarlistPage/CarlistPage'
 import VehicleDetails from './pages/VinPage/Vin'
+import Chatbot from './pages/ChatBotPage/ChatBotPage'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import './App.css'
 
@@ -19,6 +20,7 @@ function App() {
    <Route path='/CarDetails/:id' element={<CarDetails/>}/>
    <Route path='/Carlist' element={<CarlistPage/>}></Route>
    <Route path='/VehicleDetails' element={<VehicleDetails/>}></Route>
+   <Route path='/Chatbot' element={<Chatbot/>}></Route>
    </Routes>
    <Footer/>
    </BrowserRouter>
