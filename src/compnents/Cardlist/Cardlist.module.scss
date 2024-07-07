@@ -48,7 +48,7 @@
         &:hover {
             color: #fff;
         }
-        z-index: 3;
+        z-index: 2;
     }
     .arrowright {
         font-size: 1.5rem;
@@ -65,7 +65,17 @@
         &:hover {
             color: #fff;
         }
-        z-index: 3;
+        z-index: 2;
+    }
+}
+@media (max-width:400px) {
+    .carouselContainer{
+        .arrowleft{
+            left: 20px;
+        }
+        .arrowright{
+            right: 20px;
+        }
     }
 }
 
@@ -132,5 +142,6 @@
         .carouselItem {
             min-width: 300px;
         }
+       
     }
 }

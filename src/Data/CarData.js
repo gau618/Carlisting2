@@ -14,7 +14,7 @@ export const cars = [
   {
     carId: 1,
     name: 'Audi Q8',
-    imagegallery: [imgG1, imgG2],
+    imagegallery: [imgG1, imgG2,imgG2],
     image: imgAudi,
     carType: 'SUV',
     engine: '3.0L V6',

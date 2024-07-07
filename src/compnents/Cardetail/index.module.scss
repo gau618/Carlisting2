@@ -51,16 +51,13 @@
         .imagegalleryimages{
             display: flex;
             gap: 40px;
+            overflow-y: auto;
+            scrollbar-width: none;
             img{
                 width: 300px;
                object-fit: cover;
                border-radius: 10px;
             }
-        }
-        @media (max-width:1200px) {
-          .imagegalleryimages{
-            flex-direction: column;
-          }
         }
         @media (max-width:400px) {
           .imagegalleryimages{
@@ -69,6 +66,16 @@
            }
           }
         }
+    }
+    @media (max-width:1200px) {
+      .imagegallery{
+      .imagegalleryimages{
+        flex-direction: column;
+        overflow-x: auto;
+        scrollbar-width: none;
+        max-height: 350px;
+      } 
+    }
     }
     .bottoncontainer {
         margin-top: 60px;
