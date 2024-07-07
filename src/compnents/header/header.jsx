@@ -86,7 +86,7 @@ export default function Header() {
         </Link>
         </div>
         <div className={styles.credentialbutton}>
-          <button>Credentials</button>
+          <button onClick={()=>{navigate('/Blogs')}}>Blogs</button>
         </div>
         <div className={styles.menuIcon} onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faBars} />
@@ -129,7 +129,7 @@ export default function Header() {
           SELLCAR
         </Link>
         <div className={styles.credentialbutton}>
-          <button>Credentials</button>
+          <button onClick={()=>{navigate('/Blogs')}}>Blogs</button>
         </div>
         <div className={styles.closebtn} onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faTimes} />

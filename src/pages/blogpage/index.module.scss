@@ -1,0 +1,89 @@
+.Blogscontainer{
+    .blogandNews{
+        padding: 0px 10%;
+        position: absolute;
+        top: 200px;
+        left: 32%;
+        p{
+            text-align: center;
+            font-family: 'poppins';
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #fab64a;
+            font-weight: 200;
+            margin-bottom: 20px;
+        }
+        h1{
+            margin: 10px 0px;
+            color: #fff;
+            font-family: "Poppins";
+            text-align: center;
+            font-weight: bold;
+            font-size: 35px;
+            letter-spacing: 1px;
+            span {
+              color: #fab64a;
+              font-weight: bold;
+              font-family: "Poppins";
+            }
+        }
+    }
+    .blogcardcontainer{
+        padding: 60px 10%;
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 300px;
+        background-color: rgb(27,27,27);
+    }
+    .descriptioncontainer{
+        padding: 60px 10%;
+        display: flex;
+        gap: 20px;
+        background-color: rgb(27,27,27);
+       
+        .right{
+            position: relative;
+            padding: 0px 20px;
+            .icon{
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-size: 20px;
+                color: #fab64a;
+            }
+            h1{
+                color: #fff;
+                font-size: 30px;
+                font-family: "poppins";
+                margin-bottom: 20px;
+            }
+            p{
+                font-size: 20px;
+                color: #9a9a9a;
+                font-family: "poppins";
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+@media (max-width:830px) {
+    .Blogscontainer{
+        .blogandNews{
+        left: 20%;
+        
+    }
+    .descriptioncontainer{
+        flex-direction: column;
+        padding: 60px 5%;
+    }
+}
+}
+@media (max-width:400px) {
+    .Blogscontainer{
+        .blogandNews{
+        left: 10%;
+        
+    }
+   
+}
+}

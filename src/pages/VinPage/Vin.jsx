@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CarlistBackground from '../../compnents/CarlistBackgroung/CarlistBackground';
-import background from "../../assets/b.jpg"
+import background from "../../assets/VIN.jpg"
 import styles from "./index.module.scss";
 const VehicleDetails = () => {
   const [vin, setVin] = useState('');
