@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./header.module.scss";
+import {useAuth} from "../../Backend/AuthContext"
 import { useNavigate, Link, useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -10,11 +11,19 @@ export default function Header() {
   const [activeLink, setActiveLink] = useState("/");
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [authpage,setauthpage]=useState(false);
+  const {user,logout}=useAuth();
+  const Location =useLocation();
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
-
+  useEffect(()=>{
+    if(Location.pathname==='/Auth'){
+     setauthpage(true);
+    }else{
+      setauthpage(false);
+    }
+  },[Location])
   const handleScroll = () => {
     const position = window.scrollY;
     setScrollPosition(position);
@@ -84,9 +93,16 @@ export default function Header() {
         >
           SELLCAR
         </Link>
+        <Link
+          to="/Blogs"
+          className={activeLink === "/Blogs" ? styles.activeLink : ""}
+          onClick={() => handleLinkClick("/Blogs")}
+        >
+          BLOGS
+        </Link>
         </div>
         <div className={styles.credentialbutton}>
-          <button onClick={()=>{navigate('/Blogs')}}>Blogs</button>
+          {user?<button onClick={()=>logout()}>Logout</button>:(!authpage?<button onClick={()=>{navigate('/Auth')}}>Credential</button>:'')}
         </div>
         <div className={styles.menuIcon} onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faBars} />
@@ -128,8 +144,15 @@ export default function Header() {
         >
           SELLCAR
         </Link>
+        <Link
+          to="/Blogs"
+          className={activeLink === "/Blogs" ? styles.activeLink : ""}
+          onClick={() => handleLinkClick("/Blogs")}
+        >
+          BLOGS
+        </Link>
         <div className={styles.credentialbutton}>
-          <button onClick={()=>{navigate('/Blogs')}}>Blogs</button>
+          {user?<button onClick={()=>logout()}>Logout</button>:(!authpage?<button onClick={()=>{navigate('/Auth')}}>Credential</button>:'')}
         </div>
         <div className={styles.closebtn} onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faTimes} />

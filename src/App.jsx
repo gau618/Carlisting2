@@ -8,17 +8,20 @@ import VehicleDetails from './pages/VinPage/Vin'
 import Chatbot from './pages/ChatBotPage/ChatBotPage'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Blogpage from './pages/blogpage/blogpage'
+import { AuthProvider } from './Backend/AuthContext'
 import SellCarPage from './pages/SellCarPage/SellCarPage'
+import AuthForm from "./compnents/Auth/AuthForm"
 import './App.css'
-
 function App() {
 
   return (
     <>
+    <AuthProvider>
     <BrowserRouter>
    <Header/>
   <Routes>
    <Route path='/' element={ <Landingpage/>}/>
+   <Route path='/Auth' element={<AuthForm/>}/>
    <Route path='/CarDetails/:id' element={<CarDetails/>}/>
    <Route path='/Carlist' element={<CarlistPage/>}></Route>
    <Route path='/VehicleDetails' element={<VehicleDetails/>}></Route>
@@ -28,6 +31,7 @@ function App() {
    </Routes>
    <Footer/>
    </BrowserRouter>
+   </AuthProvider>
     </>
   )
 }

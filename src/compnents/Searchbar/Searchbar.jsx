@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CustomDropdown from '../CostumDropDown/Dropdown';
 import styles from "./index.module.scss";
 import { cars } from "../../Data/CarData";
+import { useAuth } from '../../Backend/AuthContext';
 
 const SearchBar = ({ setFilteredCars }) => {
   const [filteredCompanies, setFilteredCompanies] = useState([]);

@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  z-index: 3;
+  z-index: 6;
   position: absolute;
   transition: top 0.3s, background-color 0.3s, transform 0.3s;
 
@@ -82,7 +82,7 @@
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 3;
+  z-index: 6;
   top: 0;
   right: 0;
   background-color: rgb(27, 27, 27);
@@ -148,7 +148,7 @@
   width: 150px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .header {
     .navLinks {
       display: none;
