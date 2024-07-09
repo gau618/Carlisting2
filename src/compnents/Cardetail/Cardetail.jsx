@@ -2,7 +2,6 @@ import React from 'react'
 import styles from "./index.module.scss"
 import { useState,useEffect } from 'react';
 import { IoMdCheckmark } from "react-icons/io";
-import { cars } from '../../Data/CarData';
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { FcEngineering } from "react-icons/fc";
 import { BsFillFuelPumpFill } from "react-icons/bs";
@@ -10,14 +9,31 @@ import { SiTransmission } from "react-icons/si";
 import { IoIosColorPalette } from "react-icons/io";
 import { FaCar } from "react-icons/fa6";
 import { FaOilCan } from "react-icons/fa";
+import { useAuth } from '../../Backend/AuthContext';
 export default function Cardetail({id,setShowBookingModal}) {
-    const [car, setCar] = useState(null); 
+    const [cars, setCars] = useState([]); 
+    const [car, setCar] = useState([]); 
     const [activeIndex, setActiveIndex] = useState(null);
-
+    const {getAllCars}=useAuth();
     const handleToggle = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
-
+    useEffect(()=>{
+      window.scroll(0,0);
+    },[])
+    useEffect(() => {
+      
+      const fetchCars = async () => {
+        try {
+          const allCars = await getAllCars();
+          setCars(allCars);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchCars();
+    }, [getAllCars]);
     const conditions = [
         {
             title: "Contract and Annexes",
@@ -45,8 +61,7 @@ export default function Cardetail({id,setShowBookingModal}) {
       if (foundCar) {
           setCar(foundCar);
       }
-  }, []); 
-  console.log(car)
+  }, [cars]); 
   return (
     <>
     {car?<div className={styles.detailscontainer}>
@@ -79,7 +94,7 @@ export default function Cardetail({id,setShowBookingModal}) {
             <div className={styles.imagegallery}>
           <h1>Image Gallery</h1>
           <div className={styles.imagegalleryimages}>
-            {car.imagegallery.map((item, index) => (
+            {car?.imagegallery?.map((item, index) => (
               <img key={index} src={item} alt={`Image ${index}`} />
             ))}
           </div>

@@ -10,11 +10,11 @@ import imgTesla from "../assets/Carcard4.jpg";
 import imgBentley from "../assets/Carcard5.jpg";
 import imgRollsRoyce from "../assets/Carcard6.jpg";
 
-export const cars = [
+ const cars = [
   {
     carId: 1,
     name: 'Audi Q8',
-    imagegallery: [imgG1, imgG2,imgG2],
+    imagegallery: [imgG1, imgG2],
     image: imgAudi,
     carType: 'SUV',
     engine: '3.0L V6',

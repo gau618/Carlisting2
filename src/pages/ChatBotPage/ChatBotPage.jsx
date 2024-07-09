@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { cars } from "../../Data/CarData";
 import carImg from "../../assets/chatbot.jpg";
-import { useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import Card from "../../compnents/CarlistCards/CarCard";
+import { useAuth } from '../../Backend/AuthContext';
 import CarlistBackground from "../../compnents/CarlistBackgroung/CarlistBackground";
 import "./chatbot.scss";
 
@@ -15,7 +14,22 @@ const getUniqueValues = (data, field) => {
 const Chatbot = () => {
   const [input, setInput] = useState("");
   const [conversation, setConversation] = useState([]);
+  const [cars,setCars]=useState([]);
+  const { getAllCars } = useAuth();
   const conversationEndRef = useRef(null);
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const allCars = await getAllCars();
+        setCars(allCars);
+        console.log(allCars);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCars();
+  }, [getAllCars]);
 
   // Get unique values for each field from the dataset
   const uniqueCarNames = getUniqueValues(cars, "name");

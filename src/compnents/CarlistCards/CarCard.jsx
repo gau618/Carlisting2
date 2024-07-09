@@ -4,14 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { IoIosColorPalette } from "react-icons/io";
-
+import { useAuth } from "../../Backend/AuthContext";
 const Card = ({ item }) => {
     const Navigate=useNavigate();
+    const {user}=useAuth();
   return (
-    <div className={styles.card} onClick={()=>{Navigate(`/CarDetails/${item.carId}`)}}>
+    <div className={styles.card} onClick={()=>{user?Navigate(`/CarDetails/${item.carId}`):alert('Please Login')}}>
       <img
         src={item.image}
-        alt="Bugatti Mistral W16"
+        alt={item.name}
         className={styles.image}
       />
       <div className={styles.info}>

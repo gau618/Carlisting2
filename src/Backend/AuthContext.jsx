@@ -9,7 +9,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc,collection,getDocs } from "firebase/firestore";
 import { db, storage } from "../Backend/FirebaseConfig/Firebase"
 import { auth } from "./FirebaseConfig/Firebase";
 const AuthContext = createContext();
@@ -61,7 +61,6 @@ export const AuthProvider = ({ children }) => {
 
   const uploadImage = async (file) => {
     try {
-      await validateImage(file);
       const storageRef = ref(storage, `images/${file.name}`);
       const snapshot = await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(snapshot.ref);
@@ -78,6 +77,30 @@ export const AuthProvider = ({ children }) => {
       console.error("Error saving car data: ", error);
     }
   };
+  const getAllCars = async () => {
+    try {
+      const carsCollectionRef = collection(db, "cars");
+      const carsSnapshot = await getDocs(carsCollectionRef);
+      const carsArray = carsSnapshot.docs.map(doc => doc.data());
+      return carsArray;
+    } catch (error) {
+      console.error("Error fetching car data:", error);
+      throw error;
+    }
+  };
+
+  const getAllblogs = async () => {
+    try {
+      const blogsCollectionRef = collection(db, "Blogs");
+      const blogSnapshot = await getDocs(blogsCollectionRef);
+      const blogArray = blogSnapshot.docs.map(doc => doc.data());
+      return blogArray;
+    } catch (error) {
+      console.error("Error fetching Blog data:", error);
+      throw error;
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -92,7 +115,9 @@ export const AuthProvider = ({ children }) => {
         userName,
         uploadImage,
         saveCarData,
-        validateImage
+        validateImage,
+        getAllCars,
+        getAllblogs
       }}
     >
       {children}

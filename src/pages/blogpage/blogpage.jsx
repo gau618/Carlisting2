@@ -4,12 +4,27 @@ import CarlistBackground from '../../compnents/CarlistBackgroung/CarlistBackgrou
 import background from "../../assets/blogpage.jpg"
 import BlogCard from '../../compnents/BlogCard/BlogCard'
 import { IoBackspace } from "react-icons/io5";
-import {blogs} from "../../Data/blogdata"
+import { useAuth } from '../../Backend/AuthContext'
 export default function Blogpage() {
    const [description,setdescription]=useState(null);
+   const {getAllblogs}=useAuth();
+   const [blogs,setBlogs]=useState([]);
    useEffect(()=>{
      window.scrollTo(0,0);
    },[description])
+   useEffect(() => {
+      const fetchBlogs = async () => {
+        try {
+          const allBlogs = await getAllblogs();
+          setBlogs(allBlogs);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchBlogs();
+    }, [getAllblogs]);
+    console.log(blogs);
   return (
     <>
      <div className={styles.Blogscontainer}>

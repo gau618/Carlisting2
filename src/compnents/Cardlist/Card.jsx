@@ -1,13 +1,29 @@
 import React, { useRef } from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styles from './Cardlist.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { cars } from "../../Data/CarData";
-
+import { useAuth } from '../../Backend/AuthContext';
 const CarCarousel = () => {
   const Navigate = useNavigate();
   const carouselRef = useRef(null);
-  const topCars = cars.slice(0, 3); // Select the top 3 cars
+  const [cars, setCars] = useState([]);
+  const { getAllCars,user} = useAuth(); 
+  const topCars = cars?.slice(0, 5); // Select the top 3 cars
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const allCars = await getAllCars();
+        setCars(allCars);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCars();
+  }, [getAllCars]);
 
   const scrollLeft = () => {
     if (carouselRef.current) {
@@ -35,7 +51,7 @@ const CarCarousel = () => {
               <div className={styles.carouselCaption}>
                 <h2>{car.name}</h2>
                 <div className={styles.price_details}>
-                  <button className={styles.detailsButton} onClick={() => { Navigate(`/CarDetails/${car.carId}`) }}>Details</button>
+                  <button className={styles.detailsButton} onClick={()=>{user?Navigate(`/CarDetails/${car.carId}`):alert('Please Login')}}>Details</button>
                   <span className={styles.price}>{car.price}</span>
                 </div>
               </div>

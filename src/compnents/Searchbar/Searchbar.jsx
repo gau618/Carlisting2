@@ -1,23 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import CustomDropdown from '../CostumDropDown/Dropdown';
 import styles from "./index.module.scss";
-import { cars } from "../../Data/CarData";
 import { useAuth } from '../../Backend/AuthContext';
 
 const SearchBar = ({ setFilteredCars }) => {
+  const { getAllCars } = useAuth();
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [filteredCarNames, setFilteredCarNames] = useState([]);
   const [filteredFuels, setFilteredFuels] = useState([]);
-
+  const [cars, setCars] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState('');
   const [selectedCarName, setSelectedCarName] = useState('');
   const [selectedPriceRange, setSelectedPriceRange] = useState('');
   const [selectedFuel, setSelectedFuel] = useState('');
 
   useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const allCars = await getAllCars();
+        setCars(allCars);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCars();
+  }, [getAllCars]);
+
+  useEffect(() => {
     const uniqueCompanies = [...new Set(cars.map(car => car.name.split(' ')[0]))];
     setFilteredCompanies(uniqueCompanies);
-  }, []);
+  }, [cars]);
 
   useEffect(() => {
     let filteredCars = cars;
@@ -51,7 +64,7 @@ const SearchBar = ({ setFilteredCars }) => {
     setFilteredFuels(uniqueFuels);
 
     setFilteredCars(filteredCars);
-  }, [selectedCompany, selectedCarName, selectedPriceRange, selectedFuel]);
+  }, [selectedCompany, selectedCarName, selectedPriceRange, selectedFuel, cars, setFilteredCars]);
 
   return (
     <div className={styles.searchbar}>
@@ -59,7 +72,6 @@ const SearchBar = ({ setFilteredCars }) => {
       <CustomDropdown options={filteredCarNames} placeholder="Car Name" onSelect={setSelectedCarName} />
       <CustomDropdown options={['Under $60,000', '$60,000 - $80,000', 'Over $80,000']} placeholder="Price Range" onSelect={setSelectedPriceRange} />
       <CustomDropdown options={filteredFuels} placeholder="Fuel" onSelect={setSelectedFuel} />
- 
     </div>
   );
 };
