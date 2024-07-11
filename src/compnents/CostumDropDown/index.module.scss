@@ -1,20 +1,20 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  width: 22%;
+  width: 100%;
 }
 
 .dropdownHeader {
-  width: 90%;
+  width: 100%;
   padding: 0px;
-  background-color: rgb(27, 27, 27);
+  background-color: rgb(37, 37, 37);
   color: rgb(127, 145, 135);
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5px 0px;
+  padding: 6px 5px;
 }
 
 .arrow {

@@ -2,8 +2,10 @@ import React, { useState, useCallback } from "react";
 import { useAuth } from '../../Backend/AuthContext';
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './cropImage';
- // Helper function to handle image cropping
+import CustomDropdown from "../CostumDropDown/Dropdown";
 import styles from "./index.module.scss";
+
+const MAX_CHAR_LIMIT = 200;
 
 const SellerForm = () => {
   const { uploadImage, saveCarData } = useAuth();
@@ -32,9 +34,11 @@ const SellerForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCar((prevCar) => ({ ...prevCar, [name]: value }));
+    if (value.length <= MAX_CHAR_LIMIT) {
+      setCar((prevCar) => ({ ...prevCar, [name]: value }));
+    }
   };
-
+  console.log(car);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -48,7 +52,7 @@ const SellerForm = () => {
   }, []);
 
   const handleCropSave = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
       const croppedImageBlob = await getCroppedImg(mainImageFile, croppedArea, 1920, 1080);
       const croppedFile = new File([croppedImageBlob], mainImageFile.name, { type: mainImageFile.type });
@@ -58,7 +62,7 @@ const SellerForm = () => {
       setShowCropper(false);
     } catch (error) {
       alert("Failed to crop and upload main image: " + error.message);
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -87,12 +91,13 @@ const SellerForm = () => {
     }
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newCar = {
       ...car,
       carId: Date.now(),
+      price: `$${car.price}`,
+      mileage: `${car.mileage} km`,
     };
 
     try {
@@ -118,6 +123,10 @@ const SellerForm = () => {
     }
   };
 
+  const handleDropdownSelect = (field, selectedOption) => {
+    setCar((prevCar) => ({ ...prevCar, [field]: selectedOption }));
+  };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2>
@@ -126,51 +135,51 @@ const SellerForm = () => {
       <div className={styles.items}>
         <div className={styles.formGroup}>
           <label>Car Name</label>
-          <input type="text" name="name" value={car.name} onChange={handleChange} required />
+          <input type="text" name="name" value={car.name} onChange={handleChange} maxLength={MAX_CHAR_LIMIT} required />
         </div>
         <div className={styles.formGroup}>
           <label>Car Type</label>
-          <input type="text" name="carType" value={car.carType} onChange={handleChange} required />
+          <CustomDropdown options={["Sedan", "SUV", "Truck", "Coupe", "Convertible", "Hatchback", "Van"]} placeholder="Select Car Type" onSelect={(option) => handleDropdownSelect("carType", option)} />
         </div>
       </div>
       <div className={styles.items}>
         <div className={styles.formGroup}>
           <label>Color</label>
-          <input type="text" name="color" value={car.color} onChange={handleChange} required />
+          <input type="text" name="color" value={car.color} onChange={handleChange} maxLength={MAX_CHAR_LIMIT} required />
         </div>
         <div className={styles.formGroup}>
           <label>Interior Color</label>
-          <input type="text" name="interiorColor" value={car.interiorColor} onChange={handleChange} required />
+          <input type="text" name="interiorColor" value={car.interiorColor} onChange={handleChange} maxLength={MAX_CHAR_LIMIT} required />
         </div>
       </div>
       <div className={styles.items}>
         <div className={styles.formGroup}>
           <label>Engine</label>
-          <input type="text" name="engine" value={car.engine} onChange={handleChange} required />
+          <input type="text" name="engine" value={car.engine} onChange={handleChange} maxLength={MAX_CHAR_LIMIT} required />
         </div>
         <div className={styles.formGroup}>
-          <label>Mileage</label>
-          <input type="text" name="mileage" value={car.mileage} onChange={handleChange} required />
+          <label>Mileage (in km)</label>
+          <input type="number" name="mileage" value={car.mileage} onChange={handleChange} required />
         </div>
       </div>
       <div className={styles.items}>
         <div className={styles.formGroup}>
-          <label>Price</label>
-          <input type="text" name="price" value={car.price} onChange={handleChange} required />
+          <label>Price (in dollars)</label>
+          <input type="number" name="price" value={car.price} onChange={handleChange} required />
         </div>
         <div className={styles.formGroup}>
           <label>Transmission</label>
-          <input type="text" name="transmission" value={car.transmission} onChange={handleChange} required />
+          <CustomDropdown options={["Automatic", "Manual"]} placeholder="Select Transmission" onSelect={(option) => handleDropdownSelect("transmission", option)} />
         </div>
       </div>
       <div className={styles.items}>
         <div className={styles.formGroup}>
           <label>Fuel</label>
-          <input type="text" name="fuel" value={car.fuel} onChange={handleChange} required />
+          <CustomDropdown options={["Gasoline", "Petrol", "Diesel", "Electric", "Hybrid", "Solar", "Hydrogen"]} placeholder="Select Fuel Type" onSelect={(option) => handleDropdownSelect("fuel", option)} />
         </div>
         <div className={styles.formGroup}>
           <label>VIN</label>
-          <input type="text" name="VIN" value={car.VIN} onChange={handleChange} required />
+          <input type="text" name="VIN" value={car.VIN} onChange={handleChange} maxLength={MAX_CHAR_LIMIT} required />
         </div>
       </div>
       <div className={styles.imgitems}>
@@ -190,6 +199,15 @@ const SellerForm = () => {
             </div>
             <input id="file" type="file" onChange={handleImageChange} />
           </label>
+          {mainImageFile && (
+            <div className={styles.selectedImage}>
+              <img src={mainImageFile ? URL.createObjectURL(mainImageFile) : "#"} alt="Selected main" />
+              <span>{imageName}</span>
+              <button type="button" onClick={() => {setMainImageFile(null)
+                setShowCropper(false);
+              }}>×</button>
+            </div>
+          )}
         </div>
         <div className={styles.Group}>
           <label htmlFor="gallery" className={styles.custumfileupload}>
@@ -207,12 +225,24 @@ const SellerForm = () => {
             </div>
             <input id="gallery" type="file" onChange={handleGalleryChange} multiple />
           </label>
+          {galleryNames.length > 0 && (
+            <div className={styles.selectedImages}>
+              {galleryNames.map((name, index) => (
+                <div key={index} className={styles.selectedImage}>
+                  <span>{name}</span>
+                  <button type="button" onClick={() => {setGalleryNames(galleryNames.filter((_, i) => i !== index))
+                    
+                  }}>×</button>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       {showCropper && (
         <div className={styles.cropContainer}>
           <Cropper
-            image={URL.createObjectURL(mainImageFile)}
+            image={mainImageFile ? URL.createObjectURL(mainImageFile) : ""}
             crop={crop}
             zoom={zoom}
             aspect={16 / 9}
@@ -222,10 +252,10 @@ const SellerForm = () => {
           />
         </div>
       )}
-      {showCropper &&<button type="button" onClick={handleCropSave}>
-      {loading ? "Croping" : "Crop"}
-     </button>}
-      <button type="submit" disabled={loading}>
+      {showCropper && <button type="button" onClick={handleCropSave}>
+        {loading ? "Cropping" : "Crop"}
+      </button>}
+      <button type="submit" disabled={loading} onClick={()=>setMainImageFile(null)}>
         {loading ? "Loading..." : "Submit"}
       </button>
     </form>
