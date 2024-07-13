@@ -8,6 +8,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc,collection,getDocs } from "firebase/firestore";
 import { db, storage } from "../Backend/FirebaseConfig/Firebase"
@@ -72,9 +74,9 @@ export const AuthProvider = ({ children }) => {
   const saveCarData = async (car) => {
     try {
       await setDoc(doc(db, "cars", car.VIN), car);
-      alert("Car data saved successfully");
+      toast.success("Car data saved successfully");
     } catch (error) {
-      console.error("Error saving car data: ", error);
+      toast.error("Error saving car data: ", error);
     }
   };
   const getAllCars = async () => {

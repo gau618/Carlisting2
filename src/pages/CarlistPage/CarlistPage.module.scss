@@ -1,14 +1,76 @@
 .CarlistpageContainer{
+    .VINBack{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 60px 10%;
+        justify-content: center;
+        background-color: rgb(27,27,27);
+    
+    .VIN{
+        background-color: rgb(37,37,37);
+        width: 100%;
+        h1{
+            margin: 10px 0px;
+            color: #fff;
+            font-family: "Poppins";
+            text-align: center;
+            font-weight: bold;
+            font-size: 35px;
+            letter-spacing: 2px;
+          }
+          span {
+            color: #fab64a;
+            font-weight: bold;
+            font-family: "Poppins";
+          }
+    }
+}
     .searchbarcontainer{
         padding: 0px 15%;
         width: 100%;
          position: absolute;
-         top: 230px;
+         top: 260px;
+    }
+    .search{
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        padding: 0px 10%;
+        top: 200px;
+        z-index: 2;
+        left: 20%;
+        width: 60%;
+        input{
+            width: 80%;
+            height: 50px;
+            border: none;
+            outline: none;
+            font-size: larger;
+            font-family: "Poppins", sans-serif;
+            border-radius: 25px 0px 0px 25px;
+            padding-left: 10px;
+        }
+        button{
+         width: 20%;
+         height: 50px;
+         border: none;
+         outline: none;
+         border-radius: 0px 25px 25px 0px;
+         background-color: #fab64a;
+        }
     }
     @media (max-width:786px) {
         .searchbarcontainer{
             padding: 0px 5%;
-            top:180px;
+            top:240px;
+        }
+        .search{
+            top: 180px;
+            width: 90%;
+            left: 20px;
+
         }
     }
 

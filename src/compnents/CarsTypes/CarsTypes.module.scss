@@ -10,6 +10,7 @@ $hover-background: rgba(0, 0, 0, 0.5);
   padding: 50px 10%;
   background-color: $background-color;
   color: $text-color;
+  position: relative;
 }
 
 
@@ -35,12 +36,25 @@ $hover-background: rgba(0, 0, 0, 0.5);
 
 
 .cards {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-
+ display: flex;
+ overflow-x: scroll;
+ gap: 40px;
+ scrollbar-width: none;
+ scroll-behavior: smooth; 
+ .arrowleft{
+  position: absolute;
+  left: 150px;
+  z-index: 2;
+  top: 340px;
+  font-size: larger;
+ }
+ .arrowright{
+  position: absolute;
+  right: 180px;
+  z-index: 2;
+  top: 340px;
+  font-size: larger;
+ }
 .card {
   position: relative;
   width: 30%;
@@ -49,7 +63,7 @@ $hover-background: rgba(0, 0, 0, 0.5);
   overflow: hidden;
   background-color: #333;
   transition: transform 0.3s;
-
+  min-width: 320px;
   &:hover {
     transform: scale(1.05);
   }
@@ -64,6 +78,7 @@ $hover-background: rgba(0, 0, 0, 0.5);
   &:hover .cardOverlay {
     opacity: 1;
   }
+}
 }
 
 .cardOverlay {
@@ -109,11 +124,17 @@ $hover-background: rgba(0, 0, 0, 0.5);
 
 @media (max-width: 768px) {
   .cards {
-    flex-direction: column;
     align-items: center;
-  }
-
+    .arrowleft{
+      left: 40px;
+    }
+    .arrowright{
+      right: 40px;
+    }
   .card {
+    min-width: 290px;
     width: 80%;
+    
   }
+}
 }

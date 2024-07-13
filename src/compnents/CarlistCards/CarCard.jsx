@@ -5,11 +5,13 @@ import { BiSolidCategoryAlt } from "react-icons/bi";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { IoIosColorPalette } from "react-icons/io";
 import { useAuth } from "../../Backend/AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Card = ({ item }) => {
     const Navigate=useNavigate();
     const {user}=useAuth();
   return (
-    <div className={styles.card} onClick={()=>{user?Navigate(`/CarDetails/${item.carId}`):alert('Please Login')}}>
+    <div className={styles.card} onClick={()=>{user?Navigate(`/CarDetails/${item.carId}`):toast('Please Login')}}>
       <img
         src={item.image}
         alt={item.name}

@@ -19,6 +19,15 @@ const SearchBar = ({ setFilteredCars }) => {
       try {
         const allCars = await getAllCars();
         setCars(allCars);
+
+        const uniqueCompanies = [...new Set(allCars.map(car => car.name.split(' ')[0]))];
+        setFilteredCompanies(uniqueCompanies);
+
+        const uniqueCarNames = [...new Set(allCars.map(car => car.name))];
+        setFilteredCarNames(uniqueCarNames);
+
+        const uniqueFuels = [...new Set(allCars.map(car => car.fuel))];
+        setFilteredFuels(uniqueFuels);
       } catch (error) {
         console.log(error);
       }
@@ -26,11 +35,6 @@ const SearchBar = ({ setFilteredCars }) => {
 
     fetchCars();
   }, [getAllCars]);
-
-  useEffect(() => {
-    const uniqueCompanies = [...new Set(cars.map(car => car.name.split(' ')[0]))];
-    setFilteredCompanies(uniqueCompanies);
-  }, [cars]);
 
   useEffect(() => {
     let filteredCars = cars;
@@ -56,12 +60,6 @@ const SearchBar = ({ setFilteredCars }) => {
     if (selectedFuel) {
       filteredCars = filteredCars.filter(car => car.fuel === selectedFuel);
     }
-
-    const uniqueCarNames = [...new Set(filteredCars.map(car => car.name))];
-    const uniqueFuels = [...new Set(filteredCars.map(car => car.fuel))];
-
-    setFilteredCarNames(uniqueCarNames);
-    setFilteredFuels(uniqueFuels);
 
     setFilteredCars(filteredCars);
   }, [selectedCompany, selectedCarName, selectedPriceRange, selectedFuel, cars, setFilteredCars]);

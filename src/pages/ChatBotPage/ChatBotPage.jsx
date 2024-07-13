@@ -3,6 +3,7 @@ import carImg from "../../assets/chatbot.jpg";
 import { IoIosArrowBack } from "react-icons/io";
 import Card from "../../compnents/CarlistCards/CarCard";
 import { useAuth } from '../../Backend/AuthContext';
+import Loader from "../../compnents/Loader/Loader";
 import CarlistBackground from "../../compnents/CarlistBackgroung/CarlistBackground";
 import "./chatbot.scss";
 
@@ -15,16 +16,20 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const [conversation, setConversation] = useState([]);
   const [cars,setCars]=useState([]);
+  const [loading,setLoading]=useState(false);
   const { getAllCars } = useAuth();
   const conversationEndRef = useRef(null);
   useEffect(() => {
+    setLoading(true);
     const fetchCars = async () => {
       try {
         const allCars = await getAllCars();
         setCars(allCars);
-        console.log(allCars);
+
       } catch (error) {
         console.log(error);
+      }finally{
+        setLoading(false);
       }
     };
 
@@ -132,6 +137,7 @@ const Chatbot = () => {
           <button onClick={handleSearch}>Search</button>
         </div>
       </div>
+      {loading?<Loader/>:
       <div className="message-container">
         {conversation.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`} ref={conversationEndRef}>
@@ -145,6 +151,7 @@ const Chatbot = () => {
           </div>
         ))}
       </div>
+}
     </div>
   );
 };

@@ -6,7 +6,6 @@
 
 .dropdownHeader {
   width: 100%;
-  padding: 0px;
   background-color: rgb(37, 37, 37);
   color: rgb(127, 145, 135);
   border-radius: 5px;
@@ -50,9 +49,10 @@
 }
 @media (max-width: 700px) {
   .dropdown {
-    width: 70%;
+    width: 100%;
   }
   .dropdownHeader{
-    margin: 15px 0px;
+    margin: 5px 0px;
+
   }
 }

@@ -9,6 +9,7 @@ import Chatbot from './pages/ChatBotPage/ChatBotPage'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Blogpage from './pages/blogpage/blogpage'
 import { AuthProvider } from './Backend/AuthContext'
+import Loader from './compnents/Loader/Loader'
 import SellCarPage from './pages/SellCarPage/SellCarPage'
 import AuthForm from "./compnents/Auth/AuthForm"
 import './App.css'

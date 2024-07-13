@@ -42,12 +42,28 @@
     }
     .imagegallery{
         margin-top: 60px;
+        position: relative;
+        scroll-behavior: smooth;
         h1{
             font-size: 20px;
             color: #fff;
             font-family: "Poppins", sans-serif;
             margin-bottom: 10px;
         }
+        .arrowleft{
+          position: absolute;
+          left: 10px;
+          z-index: 2;
+          top: 130px;
+          font-size: larger;
+         }
+         .arrowright{
+          position: absolute;
+          right: 70px;
+          z-index: 2;
+          top: 130px;
+          font-size: larger;
+         }
         .imagegalleryimages{
             display: flex;
             gap: 40px;
@@ -75,6 +91,12 @@
         scrollbar-width: none;
         max-height: 350px;
       } 
+      .arrowleft{
+         display: none;
+      }
+      .arrowright{
+        display: none;
+      }
     }
     }
     .bottoncontainer {

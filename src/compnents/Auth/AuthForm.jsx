@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Backend/AuthContext";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Auth.css";
 
 const AuthForm = () => {
@@ -35,11 +37,8 @@ const AuthForm = () => {
     try {
       if (isSignUp) {
         await signUp(email, password,name);
-        console.log("signUp")
-        console.log(name);
       } else {
         await signIn(email, password);
-        console.log("signIn")
       }
       if (rememberMe) {
         localStorage.setItem("email", email);
@@ -53,11 +52,11 @@ const AuthForm = () => {
       navigate("/");
     } catch (err) {
       if (!isSignUp && err.message.includes("user-not-found")) {
-        alert("User not found. Please sign up first.");
+        toast("User not found. Please sign up first.");
         setIsSignUp(true);
         setActive(true);
       } else {
-        alert(err.message);
+        toast.error('User-not-found');
       }
       setError(err.message);
     }
@@ -68,20 +67,20 @@ const AuthForm = () => {
       await signInWithGoogle();
       navigate("/");
     } catch (err) {
-      alert(err.message);
+      toast.error('Error');
     }
   };
 
   const handlePasswordReset = async () => {
     if (!email) {
-      alert("Please enter your email to reset password.");
+      toast.error("Please enter your email to reset password.");
       return;
     }
     try {
       await resetPassword(email);
-      alert("Password reset email sent.");
+      toast("Password reset email sent.");
     } catch (err) {
-      alert(err.message);
+      toast.error('Error while reseting Password');
     }
   };
 

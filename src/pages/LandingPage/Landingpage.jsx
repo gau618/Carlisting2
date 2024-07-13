@@ -12,7 +12,7 @@ export default function Landingpage() {
     <Maincontainer/>
     <CarTypes/>
     <SearchBarContainer setFilteredCars={setfiltercars}/>
-    <CardContainer/>
+    <CardContainer filtercar={filtercar}/>
     </div>
      </>
   )
