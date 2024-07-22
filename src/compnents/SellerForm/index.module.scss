@@ -1,7 +1,7 @@
 .form {
   padding: 40px 5%;
   background: rgb(27, 27, 27);
-
+  position: relative;
   h2 {
     margin: 20px 0px;
     color: #fff;
@@ -128,6 +128,23 @@
       .custumfileupload input {
         display: none;
       }
+      .addmoreimages{
+        width: 70px;
+        margin: 50px 40px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border: 2px solid #fab64a;
+        color: #fab64a;
+      }
+      .addmoreimages:hover{
+        border: 2px solid white;
+        color: white;
+      }
 
       .selectedImage {
         display: flex;
@@ -169,7 +186,6 @@
       .selectedImages {
         display: flex;
         flex-wrap: wrap;
-
         .selectedImage {
           margin-right: 10px;
           margin-bottom: 10px;
@@ -220,14 +236,20 @@
       color: #fab64a;
     }
   }
-
+  .cropmodel{
+    position: absolute;
+    z-index: 3;
+    top: 600px;
+    background-color: white;
+    width: 555px;
   .cropContainer {
-    width: 600px;
-    height: 400px;
+    width: 500px;
+    height: 350px;
     margin: 20px 5%;
     overflow: hidden;
     position: relative;
   }
+}
 }
 
 @media (max-width: 600px) {
@@ -250,10 +272,13 @@
     .imgitems {
       flex-direction: column;
     }
-
-    .cropContainer {
+    .cropmodel{
       width: 280px;
+      top: 1050px;
+    .cropContainer {
+      width: 250px;
       height: 200px;
     }
+  }
   }
 }

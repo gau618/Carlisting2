@@ -45,7 +45,7 @@ const SellerForm = () => {
     }
   };
 
-
+  console.log(car);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -88,16 +88,16 @@ const SellerForm = () => {
 
     try {
       const galleryUrls = await Promise.all(files.map(uploadImage));
-      console.log("Gallery URLs:", galleryUrls); // Check URLs received from uploadImage
 
-      // Update car state with galleryUrls
       setCar((prevCar) => ({
         ...prevCar,
-        imagegallery: galleryUrls,
+        imagegallery: [...prevCar.imagegallery, ...galleryUrls],
       }));
 
-      // Update galleryNames state with file names
-      setGalleryNames(files.map((file) => file.name));
+      setGalleryNames((prevNames) => [
+        ...prevNames,
+        ...files.map((file) => file.name),
+      ]);
       toast.success("Gallery images uploaded successfully");
     } catch (error) {
       toast.error("Failed to upload gallery images: " + error.message);
@@ -155,7 +155,6 @@ const SellerForm = () => {
     setShowModal(false);
     setModalImage("");
   };
-
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -333,21 +332,34 @@ const SellerForm = () => {
             <div className={styles.text}>
               <span>Choose Main Image</span>
             </div>
-            <input id="file" type="file" onChange={handleImageChange} />
+            <input
+              id="file"
+              type="file"
+              onChange={handleImageChange}
+              accept="image/*"
+            />
           </label>
           {mainImageFile && (
-            <div className={styles.selectedImage} onClick={(e)=>{console.log(e)}}>
+            <div
+              className={styles.selectedImage}
+              onClick={(e) => {
+                console.log(e);
+              }}
+            >
               <img
                 src={mainImageFile ? URL.createObjectURL(mainImageFile) : "#"}
                 alt="Selected main"
-                onClick={() => handleImageClick( URL.createObjectURL(mainImageFile))}
+                onClick={() =>
+                  handleImageClick(URL.createObjectURL(mainImageFile))
+                }
               />
               <button
-              className={styles.buttonx}
+                className={styles.buttonx}
                 type="button"
                 onClick={() => {
                   setMainImageFile(null);
                   setShowCropper(false);
+                  setCar((prevCar) => ({ ...prevCar, image: null }));
                 }}
               >
                 ×
@@ -379,66 +391,98 @@ const SellerForm = () => {
               type="file"
               onChange={handleGalleryChange}
               multiple
+              accept="image/*"
             />
           </label>
           {galleryNames.length > 0 && (
             <div className={styles.selectedImages}>
-              {car.imagegallery.map((name, index) => (
+              {car.imagegallery.map((url, index) => (
                 <div key={index} className={styles.selectedImage}>
-                  <img src={name} alt="" 
-                   onClick={() => handleImageClick(name)}/>
+                  <img
+                    src={url}
+                    alt={`Gallery Image ${index}`}
+                    onClick={() => handleImageClick(url)}
+                  />
                   <button
                     type="button"
                     className={styles.buttonx}
                     onClick={() => {
-                      setGalleryNames(
-                        galleryNames.filter((_, i) => i !== index)
+                      // Update both galleryNames and imagegallery states
+                      setGalleryNames((prevNames) =>
+                        prevNames.filter((_, i) => i !== index)
                       );
+                      setCar((prevCar) => ({
+                        ...prevCar,
+                        imagegallery: prevCar.imagegallery.filter(
+                          (_, i) => i !== index
+                        ),
+                      }));
                     }}
                   >
                     ×
                   </button>
                 </div>
               ))}
+              {car.imagegallery.length > 0 && (
+                <button
+                  className={styles.addmoreimages}
+                  type="button"
+                  onClick={() => document.getElementById("gallery").click()}
+                >
+                  +
+                </button>
+              )}
             </div>
           )}
         </div>
       </div>
-      {showCropper && (
-        <div className={styles.cropContainer}>
-          <Cropper
-            image={mainImageFile ? URL.createObjectURL(mainImageFile) : ""}
-            crop={crop}
-            zoom={zoom}
-            aspect={16 / 9}
-            onCropChange={setCrop}
-            onZoomChange={setZoom}
-            onCropComplete={onCropComplete}
-          />
-        </div>
-      )}
-      {showCropper && (
-        <button type="button" onClick={handleCropSave}>
-          {loading ? "Cropping" : "Crop"}
-        </button>
-      )}
+      <div className={styles.cropmodel}>
+        {showCropper && (
+          <div className={styles.cropContainer}>
+            <Cropper
+              image={mainImageFile ? URL.createObjectURL(mainImageFile) : ""}
+              crop={crop}
+              zoom={zoom}
+              aspect={16 / 9}
+              onCropChange={setCrop}
+              onZoomChange={setZoom}
+              onCropComplete={onCropComplete}
+            />
+          </div>
+        )}
+        {showCropper && (
+          <>
+            <button type="button" onClick={handleCropSave}>
+              {loading ? "Cropping" : "Crop"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setShowCropper(false);
+                setMainImageFile(null);
+              }}
+            >
+              {" "}
+              Cancel
+            </button>
+          </>
+        )}
+      </div>
       {showCropper ? (
         ""
-      ) : loading?(
+      ) : loading ? (
+        <button> Loading...</button>
+      ) : (
         <button
+          type="submit"
+          disabled={loading}
+          onClick={() => setMainImageFile(null)}
         >
           {" "}
-          Loading...
+          Submit
         </button>
-      ):<button
-      type="submit"
-      disabled={loading}
-      onClick={() => setMainImageFile(null)}
-    >
-      {" "}
-      Submit
-    </button>}
-    <Modal show={showModal} image={modalImage} onClose={closeModal} />
+      )}
+      <Modal show={showModal} image={modalImage} onClose={closeModal} />
     </form>
   );
 };
