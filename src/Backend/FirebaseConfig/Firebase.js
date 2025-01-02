@@ -4,12 +4,12 @@ import {getFirestore} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBr0pnQu5MioIk11EwJfOCzks_67Ggh9P4",
+  apiKey: "AIzaSyBr0pnQu5MioIk11EwJfOCzks_67Ggmhu",
   authDomain: "car-listing-website.firebaseapp.com",
   projectId: "car-listing-website",
   storageBucket: "car-listing-website.appspot.com",
   messagingSenderId: "1041626908078",
-  appId: "1:1041626908078:web:a8ceda8279c01180c6343f",
+  appId: "1:1041626908078:web:a8ceda8279c01180c63jbhu",
   measurementId: "G-TST2F76VT2"
 };
 const app = initializeApp(firebaseConfig);
